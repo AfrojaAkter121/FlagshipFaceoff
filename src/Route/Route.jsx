@@ -18,6 +18,8 @@ import PhoneDetails from "../Pages/PhoneDetails";
         {
             path: '/',
             Component: Home,
+            hydrateFallbackElement: <p>Loading........</p>,
+            loader: () => fetch('../../public/phones.json')
         },
         {
             path:'/favorite',
@@ -28,7 +30,8 @@ import PhoneDetails from "../Pages/PhoneDetails";
             Component: About
         },
         {
-            path: '/phone-details',
+            path: '/phone-details/:id',
+            loader:() => fetch(`../phones.json`),
             Component: PhoneDetails,
         }
       ]
